@@ -1,0 +1,122 @@
+/*
+ * stm32f401xx.h
+ *
+ *  Created on: July 14, 2025
+ *      Author: akshat
+ */
+
+#ifndef DRIVERS_INC_STM32F401XX_H_
+#define DRIVERS_INC_STM32F401XX_H_
+
+#define _vo volatile
+// Base Addresses for System Memories and APBx and AHBx bus domains
+#define SRAM1_Base_Addr                      0x20000000U
+#define FLash_Base_Addr	    				 0x08000000U
+#define ROM_Base_Addr					     0x1FFF0000U
+#define APB1_Base_Addr 						 0x40000000U
+#define APB2_Base_Addr						 0x40010000U
+#define AHB1_Base_Addr						 0x40020000U
+#define AHB2_Base_Addr						 0x50000000U
+
+
+// Base Addresses for peripherals hanging on AHB1
+
+#define GPIOA_Base_Addr					(AHB1_Base_Addr	+ 0x0000)
+#define GPIOB_Base_Addr					(AHB1_Base_Addr	+ 0x0400)
+#define GPIOC_Base_Addr					(AHB1_Base_Addr	+ 0x0800)
+#define GPIOD_Base_Addr					(AHB1_Base_Addr	+ 0x0C00)
+#define GPIOE_Base_Addr					(AHB1_Base_Addr	+ 0x1000)
+#define GPIOH_Base_Addr					(AHB1_Base_Addr	+ 0x1C00)
+
+// Base Addresses for peripherals hanging on APB1
+#define I2C1_Base_Addr					(APB1_Base_Addr + 0x5400)
+#define I2C2_Base_Addr					(APB1_Base_Addr + 0x5800)
+#define I2C3_Base_Addr					(APB1_Base_Addr + 0x5C00)
+#define SPI2_Base_Addr					(APB1_Base_Addr + 0x3800)
+#define SPI3_Base_Addr					(APB1_Base_Addr + 0x3C00)
+#define USART2_Base_Addr				(APB1_Base_Addr + 0x4400)
+
+// Base Addresses for peripherals hanging on APB2
+#define SPI1_Base_Addr					(APB2_Base_Addr + 0x3000)
+#define USART1_Base_Addr				(APB2_Base_Addr + 0x1000)
+#define SPI4_Base_Addr					(APB2_Base_Addr + 0x3400)
+#define USART6_Base_Addr				(APB2_Base_Addr + 0x1400)
+
+// Base Addresses for peripheral registers
+typedef struct
+{
+	_vo uint32_t MODER;
+	_vo uint32_t OTYPER;
+	_vo uint32_t OSPEEDR;
+	_vo uint32_t PUPDR;
+	_vo uint32_t IDR;
+	_vo uint32_t ODR;
+	_vo uint32_t BSRR;
+	_vo uint32_t LCKR;
+	_vo uint32_t AFRL;
+	_vo uint32_t AFRH;
+
+}GPIO_RegDef_t;
+GPIO_RegDef_t *pGPIOA = (GPIO_RegDef_t*)GPIOA_Base_Addr;
+GPIO_RegDef_t *pGPIOB = (GPIO_RegDef_t*)GPIOB_Base_Addr;
+GPIO_RegDef_t *pGPIOC = (GPIO_RegDef_t*)GPIOC_Base_Addr;
+GPIO_RegDef_t *pGPIOD = (GPIO_RegDef_t*)GPIOD_Base_Addr;
+GPIO_RegDef_t *pGPIOE = (GPIO_RegDef_t*)GPIOE_Base_Addr;
+GPIO_RegDef_t *pGPIOH = (GPIO_RegDef_t*)GPIOH_Base_Addr;
+
+typedef struct
+{
+	_vo uint32_t CR1;
+	_vo uint32_t CR2;
+	_vo uint32_t OAR1;
+	_vo uint32_t OAR2;
+	_vo uint32_t DR;
+	_vo uint32_t SR1;
+	_vo uint32_t SR2;
+	_vo uint32_t CCR;
+	_vo uint32_t TRISE;
+	_vo uint32_t FLTR;
+	
+}GPIO_RegDef_t;
+GPIO_RegDef_t *pI2C1 = (GPIO_RegDef_t*)I2C1_Base_Addr;
+GPIO_RegDef_t *pI2C2 = (GPIO_RegDef_t*)I2C2_Base_Addr;
+GPIO_RegDef_t *pI2C3 = (GPIO_RegDef_t*)I2C3_Base_Addr;
+
+typedef struct
+{
+	_vo uint32_t CR1;
+	_vo uint32_t SR;
+	_vo uint32_t DR;
+	_vo uint32_t CRCPR;
+	_vo uint32_t RXCRCR;
+	_vo uint32_t TXCRCR;
+	_vo uint32_t I2SCFGR;
+	_vo uint32_t I2SPR;
+};GPIO_RegDef_t;
+GPIO_RegDef_t *SPI1=(GPIO_RegDef_t*)SPI1_Base_Addr;
+GPIO_RegDef_t *SPI2=(GPIO_RegDef_t*)SPI2_Base_Addr;
+GPIO_RegDef_t *SPI3=(GPIO_RegDef_t*)SPI3_Base_Addr;
+GPIO_RegDef_t *SPI4=(GPIO_RegDef_t*)SPI4_Base_Addr;
+
+
+typedef struct
+{
+	_vo uint32_t SR;
+	_vo uint32_t DR;
+	_vo uint32_t BRR;
+	_vo uint32_t CR1;
+	_vo uint32_t CR2;
+	_vo uint32_t CR3;
+	_vo uint32_t GTPR;
+};GPIO_RegDef_t;
+GPIO_RegDef_t *USART1=(GPIO_RegDef_t*)USART1_Base_Addr;
+GPIO_RegDef_t *USART2=(GPIO_RegDef_t*)USART2_Base_Addr;
+GPIO_RegDef_t *USART6=(GPIO_RegDef_t*)USART6_Base_Addr;
+
+
+
+
+
+
+
+#endif /* DRIVERS_INC_STM32F401XX_H_ */
